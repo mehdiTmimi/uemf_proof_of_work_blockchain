@@ -1,6 +1,6 @@
 class Block {
     constructor(height, hash, previousHash, 
-        timestamp, difficulty, blockReward,nonce) {
+        timestamp, difficulty, blockReward,nonce,miner) {
         this.height=height
         this.hash=hash
         this.previousHash=previousHash
@@ -10,5 +10,7 @@ class Block {
         this.nonce=nonce
         this.blockchain = null
         this.transactions = []
+        this.miner = miner
+        this.previousBlock = null
     }
 }

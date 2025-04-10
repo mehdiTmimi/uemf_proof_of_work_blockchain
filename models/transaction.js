@@ -1,8 +1,11 @@
 class Transaction {
-    constructor(signature, feesAmount) {
+    constructor(signature, fees, amount, receiver, sender) {
         this.signature = signature
-        this.feesAmount = feesAmount
+        this.fees = fees
+        this.amount = amount
         this.mempool = null;
         this.block = null
+        this.sender = receiver
+        this.receiver = sender 
     }
 }
