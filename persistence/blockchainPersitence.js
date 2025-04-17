@@ -1,4 +1,5 @@
 const fs = require("fs")
+const { resolve } = require("path")
 const pathDb = "../database/blockchain.json"
 const saveBlockchain = async (blockchain) => {
     const { name, difficulty, miningInterval,
@@ -12,11 +13,24 @@ const saveBlockchain = async (blockchain) => {
             {
                 name, difficulty, miningInterval, blockReward, denom, head
             }
-        ))
+        ),null,3)
         return true;
     }
     catch (e) {
         console.error(e)
         return false
     }
+}
+const loadBlockchain = () =>{
+   return new Promise((resolve,reject)=>{
+    fs.promises.readFile(pathDb)
+    .then(data=>{
+        data = JSON.parse(data)
+        resolve(data)
+    })
+    .catch(e=>{
+        console.error(e)
+        reject(null)
+    })
+   })
 }
