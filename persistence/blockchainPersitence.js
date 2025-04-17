@@ -12,25 +12,28 @@ const saveBlockchain = async (blockchain) => {
         await fs.promises.writeFile(pathDb, JSON.stringify(
             {
                 name, difficulty, miningInterval, blockReward, denom, head
-            }
-        ),null,3)
+            }, null, 3
+        ))
         return true;
     }
     catch (e) {
         console.error(e)
-        return false
+        throw e
     }
 }
-const loadBlockchain = () =>{
-   return new Promise((resolve,reject)=>{
-    fs.promises.readFile(pathDb)
-    .then(data=>{
-        data = JSON.parse(data)
-        resolve(data)
+const loadBlockchain = () => {
+    return new Promise((resolve, reject) => {
+        fs.promises.readFile(pathDb)
+            .then(data => {
+                data = JSON.parse(data)
+                resolve(data)
+            })
+            .catch(e => {
+                console.error(e)
+                reject(null)
+            })
     })
-    .catch(e=>{
-        console.error(e)
-        reject(null)
-    })
-   })
+}
+module.exports = {
+    loadBlockchain, saveBlockchain
 }
