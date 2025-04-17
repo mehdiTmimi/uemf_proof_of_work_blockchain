@@ -1,6 +1,6 @@
 const fs = require("fs")
 const { resolve } = require("path")
-const pathDb = "../database/blockchain.json"
+const pathDb = "database/blockchain.json"
 const saveBlockchain = async (blockchain) => {
     const { name, difficulty, miningInterval,
         blockReward, denom, head } = blockchain
