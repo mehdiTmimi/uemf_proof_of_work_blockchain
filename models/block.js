@@ -8,9 +8,9 @@ class Block {
         this.difficulty=difficulty
         this.blockReward=blockReward
         this.nonce=nonce
-        this.blockchain = null
-        this.transactions = []
         this.miner = miner
         this.previousBlock = null
+        this.blockchain = null
+        this.transactions = []
     }
 }
